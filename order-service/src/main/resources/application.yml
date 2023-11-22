@@ -11,6 +11,8 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848 # nacos服务地址
+      discovery:
+        cluster-name: HZ # 集群名称
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
@@ -27,7 +29,8 @@ logging:
 # 法二：局部负载均衡随机，只对user-service设置随机
 userserver:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则：随机
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则：同集群优先，集群内服务随机
 # 默认采用懒加载，第一次使用时才会加载。配置饥饿加载则是在第一次启动项目时就加载
 ribbon:
   eager-load:
