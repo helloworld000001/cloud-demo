@@ -21,3 +21,7 @@ eureka:
   client:
     service-url: # eureka地址信息
       defaultZone: http://127.0.0.1:10086/eureka/
+# 法二：局部负载均衡随机，只对user-service设置随机
+userserver:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
