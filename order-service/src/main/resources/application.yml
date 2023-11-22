@@ -14,6 +14,7 @@ spring:
       discovery:
         cluster-name: HZ # 集群名称
         namespace: 2aaa55bc-2f82-454a-9edc-bd4186b0ae10 # 命名空间：dev环境
+        ephemeral: false # 设置为非临时实例
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
