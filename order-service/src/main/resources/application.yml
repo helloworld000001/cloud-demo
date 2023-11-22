@@ -13,6 +13,7 @@ spring:
       server-addr: localhost:8848 # nacos服务地址
       discovery:
         cluster-name: HZ # 集群名称
+        namespace: 2aaa55bc-2f82-454a-9edc-bd4186b0ae10 # 命名空间：dev环境
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
