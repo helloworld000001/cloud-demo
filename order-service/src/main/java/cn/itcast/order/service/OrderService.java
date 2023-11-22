@@ -21,8 +21,8 @@ public class OrderService {
         Order order = orderMapper.findById(orderId);
 
         // 2. 利用RestTemplate发送http请求，查询用户
-        // 2.1 url路径
-        String url = "http://localhost:8081/user/" + order.getUserId();
+        // 2.1 url路径: 使用服务名称替代固定IP,不使用硬编码
+        String url = "http://userserver/user/" + order.getUserId();
         // 2.2 发送http请求，实现远程调用
         User user = restTemplate.getForObject(url, User.class);
 
