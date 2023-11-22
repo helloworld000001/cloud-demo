@@ -25,7 +25,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <!-- 我们的sql版本是17，使用Eureka时写的1.8可以正常编译通过，Nacos必须匹配本机对应sql版本，否则将会报错 -->
+        <java.version>17</java.version>
         <spring-cloud.version>Hoxton.SR10</spring-cloud.version>
         <mysql.version>5.1.6</mysql.version>
         <mybatis.version>2.1.1</mybatis.version>
@@ -38,6 +39,14 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- nacos管理依赖 -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2.2.5.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
