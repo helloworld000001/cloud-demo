@@ -15,4 +15,5 @@ import org.springframework.stereotype.Component;
 public class PatternProperties {
     /* 会自动拼接pattern.dateformat 字段*/
     private String dateformat;
+    private String envSharedValue;
 }
