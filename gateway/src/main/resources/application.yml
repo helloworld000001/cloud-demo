@@ -12,7 +12,11 @@ spring:
           uri: lb://userservice # 路由的目标地址。lb表示LoadBalance负载均衡
           predicates: # 路由断言，判断请求是否符合规则
             - Path=/user/** # 路径断言，判断路径是否是以/user开头，如果是则符合规则。跳转到lb://userservice地址
+#          filters: # 只对user-service的过滤
+#            - AddRequestHeader=Truth,Itcast is freaking awesome!
         - id: order-service
           uri: lb://orderservice
           predicates:
             - Path=/order/**
+      default-filters: # 全局过滤器
+        - AddRequestHeader=Truth,Itcast is freaking awesome(default)!
