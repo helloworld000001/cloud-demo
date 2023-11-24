@@ -1,6 +1,7 @@
 package cn.itcast.order;
 
-import cn.itcast.order.config.DefaultFeignConfiguration;
+import cn.itcast.feign.clients.UserClient;
+import cn.itcast.feign.config.DefaultFeignConfiguration;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
 import org.mybatis.spring.annotation.MapperScan;
@@ -14,7 +15,9 @@ import org.springframework.web.client.RestTemplate;
 @MapperScan("cn.itcast.order.mapper")
 @SpringBootApplication
 /* 自动装配Feign客户端: DefaultFeignConfiguration对全局生效 */
-@EnableFeignClients(defaultConfiguration = DefaultFeignConfiguration.class)
+/* 由于生成UserClient的@FeignClient注解在cn.itcast.feign.client下，当前注解在cn.itcast.order下
+* 是扫描不到的@FeignClient注解的。所以需要使用clients参数指明需要扫描的类 */
+@EnableFeignClients(clients = UserClient.class, defaultConfiguration = DefaultFeignConfiguration.class)
 public class OrderApplication {
 
     public static void main(String[] args) {
